@@ -1,3 +1,38 @@
+/* Importing Custom Nokia Font from: https://www.dafont.com/nokia-cellphone.font*/
+@font-face {
+    font-family: 'NokiaFont';
+    src: url('../font/nokiafc22.ttf') format('truetype');
+}
+
+/* Importing Google Font "Oxanium"*/
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
+
+/* CSS Variables */
+:root {
+    --brand-primary-font: 'NokiaFont', sans-serif;
+    --brand-secondary-font: 'Oxanium', sans-serif;
+    --brand-dblue: #292F3D;
+    --brand-neon: #95C406;
+    --brand-dgreen: #304807;
+    --brand-lgrey: #E6E7E2;
+    --brand-dgrey: #7F8083;
+    --brand-black: #212727;
+    --brand-lblue: #6BC2ED;
+
+}
+
+
+/* Global Styles */
 body {
-    background-color: blue;
+    background-color: var(--brand-dblue);
+    font-family: var(--brand-secondary-font);
+    color: var(--brand-lgrey);
+    font-size: medium;
+}
+
+div{
+    background-color: #95C406;
+    color: #304807;
+    font-family: var(--brand-primary-font);
+    font-size: medium;
 }
