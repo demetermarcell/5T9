@@ -2,6 +2,8 @@
 @font-face {
     font-family: 'NokiaFont';
     src: url('../font/nokiafc22.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
     
 }
 
@@ -49,11 +51,16 @@ body {
     padding: 1rem;
 }
 
-#game-screen {
+.game-screen {
     background-color: var(--brand-neon);
     color: var(--brand-dgreen);
     font-family: var(--brand-primary-font);
 }
+
+.game-controls {
+    color: var(--brand-lblue);
+}
+
 
 
 /* div{

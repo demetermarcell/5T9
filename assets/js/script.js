@@ -6,50 +6,24 @@ launchBtn.addEventListener("click", gameStart);
 endGameBtn.addEventListener("click", gameEnd);
 restartBtn.addEventListener("click", gameRestart);
 
-// function gameStart (e){
-//     toggleScreen();
-// }
-
-// function gameEnd (e){
-//     toggleScreen();
-// }
-
-// function gameEnd (e){
-//     toggleScreen();
-// }
-
-
-// function toggleScreen(){
-//     const currentScreen = document.getElementsByClassName.contains
-// }
-
-
 function gameStart (e){
-    const prevSections = document.getElementsByClassName("screen1");
-    const nextSections = document.getElementsByClassName("screen2");
-    for (let section of prevSections){
-        section.classList.toggle("hide");}
-    
-        for (let element of nextSections){
-        element.classList.toggle("hide");}
+    toggleScreen(0,1);
 }
 
 function gameEnd (e){
-    const prevSections = document.getElementsByClassName("screen2");
-    const nextSections = document.getElementsByClassName("screen3");
-    for (let section of prevSections){
-        section.classList.toggle("hide");}
-    
-        for (let element of nextSections){
-        element.classList.toggle("hide");}
+    toggleScreen(1,2);
 }
 
 function gameRestart (e){
-    const prevSections = document.getElementsByClassName("screen3");
-    const nextSections = document.getElementsByClassName("screen1");
-    for (let section of prevSections){
-        section.classList.toggle("hide");}
-    
-        for (let element of nextSections){
-        element.classList.toggle("hide");}
+    toggleScreen(2,0);
 }
+
+/**
+ * This function changes between screens on button trigger.
+ */
+function toggleScreen(currentScreen, nextScreen){
+    const screens = document.querySelectorAll(".screen");
+    screens.forEach((screen, index) => {screen.classList.toggle("hide", index!== nextScreen)})
+    }
+
+
