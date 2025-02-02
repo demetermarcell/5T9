@@ -2,6 +2,7 @@
 @font-face {
     font-family: 'NokiaFont';
     src: url('../font/nokiafc22.ttf') format('truetype');
+    
 }
 
 /* Importing Google Font "Oxanium"*/
@@ -30,9 +31,34 @@ body {
     font-size: medium;
 }
 
-div{
+.hide {
+    display: none;
+}
+
+.heading {
+    box-sizing: border-box;
+    width: 30%;
+    height: auto;
+    margin: auto;
+}
+#game-area {
+    box-sizing: border-box;
+    width: 90%;
+    height: 45vh;
+    margin: auto;
+    padding: 1rem;
+}
+
+#game-screen {
+    background-color: var(--brand-neon);
+    color: var(--brand-dgreen);
+    font-family: var(--brand-primary-font);
+}
+
+
+/* div{
     background-color: #95C406;
     color: #304807;
     font-family: var(--brand-primary-font);
     font-size: medium;
-}
+} */

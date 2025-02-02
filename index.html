@@ -21,13 +21,40 @@
 
 <body>
     <!-- Header -->
-    <p>Rules are the rules and the Facts are the facts.
-        ...and when the cheese drawer opens, you gotta pay the tax.</p>
+    <h1 class="heading">
+        <img src="assets/images/5t9Logo.png" alt="5T9 Logo">
+    </h1>
+
     <!-- Main -->
-     <div>
-        Hello World!
-        123456789
-     </div>
+    <div id="game-area">
+        <div id="game-screen">
+            <div class="screen1">
+                <p>Rules are the rules.</p>
+            </div>
+            <div class="screen2 hide">
+                <p>This is the Game</p>
+            </div>
+            <div class="screen3 hide">
+                <p>These are the Scores</p>
+            </div>
+        </div>
+        <div id="controls">
+            <!-- Screen 1 buttons -->
+            <div class="screen1">
+                <button id="launch">Launch Game</button>
+            </div>
+            <!-- Screen 2 buttons -->
+            <div class="screen2 hide">
+                <button id="end-game">End Game</button>
+                <button id="submit">Submit</button>
+                <button id="skip">Skip</button>
+            </div >
+            <!-- Screen 3 buttons -->
+            <div class="screen3 hide">
+                <button id="restart">Restart Game</button>
+            </div>
+        </div>
+    </div>
     <!-- Footer -->
 
     <!-- JS script -->
