@@ -34,27 +34,28 @@ body {
   display: none;
 }
 
-.heading {
+/* Heading section*/
+.header {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 15vh;
 }
 
-.heading > img {
+.header > img {
   height: 100%;
   max-height: 150px;
   width: auto;
   padding: 2.5rem;
 }
 
+/* Game Screen section*/
 .game-screen {
-    background-color: var(--brand-neon);
+  background-color: var(--brand-neon);
   color: var(--brand-dgreen);
   font-family: var(--brand-primary-font);
   box-sizing: border-box;
   width: 80%;
-  height: 30vh;
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 0;
@@ -62,28 +63,44 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+.game-screen p {
+    padding: 0 3rem;
 }
 
 .game-screen span {
-    padding: 0 1rem;
+  padding: 0 1rem;
 }
 
+/* Input styling */
+#user-form label {
+    font-size: 150%;
+}
+
+#user-name {
+    background-color: var(--brand-neon);
+    border: 4px solid var(--brand-dgreen);
+    color: var(--brand-dgreen);
+    font-family: var(--brand-primary-font);
+    font-size: 200%;
+}
+
+#user-name:focus {
+    outline: none; 
+  }
+  
+/* Game Control buttons section */
 .game-controls {
   background-color: var(--brand-dblue);
   width: 100%;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  padding:1rem;
+  padding: 1rem;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
-
-/* div{
-    background-color: #95C406;
-    color: #304807;
-    font-family: var(--brand-primary-font);
-    font-size: medium;
-} */

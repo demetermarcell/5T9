@@ -1,15 +1,20 @@
 // Button controls:
 
-const launchBtn = document.getElementById("launch");
+const startBtn = document.getElementById("start");
 const endGameBtn = document.getElementById("end-game");
 const restartBtn = document.getElementById("restart");
 
-launchBtn.addEventListener("click", gameStart);
+startBtn.addEventListener("click", gameStart);
 endGameBtn.addEventListener("click", gameEnd);
 restartBtn.addEventListener("click", gameRestart);
 
 function gameStart (e){
-    toggleScreen(0,1);
+    if (document.getElementById('user-form').checkValidity()) {
+        // document.getElementById('user-form').submit(); 
+        toggleScreen(0, 1);
+    } else {
+        alert("Please fill in the username field.");
+    }
 }
 
 function gameEnd (e){
@@ -18,6 +23,7 @@ function gameEnd (e){
 
 function gameRestart (e){
     toggleScreen(2,0);
+    // document.getElementById("user-name").value = ""; empties input value
 }
 
 /**
@@ -29,13 +35,13 @@ function toggleScreen(currentScreen, nextScreen){
     }
 
 
-// Keyboard controls:
-
+/**
+ * Keyboard controls:
+ */
 document.addEventListener("keydown", keyNav);
 
 function keyNav(e){
     const allowedKeys = [" ", "Enter", "Escape"];
-    e.preventDefault();
     if (allowedKeys.includes(e.key)){
         e.preventDefault();
         console.log(e.key);

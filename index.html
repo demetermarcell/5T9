@@ -21,7 +21,7 @@
 
 <body>
     <!-- Header -->
-    <h1>
+    <h1 class="header">
         <img src="assets/images/5t9Logo.png" alt="5T9 Logo">
     </h1>
 
@@ -29,17 +29,32 @@
     <div id="game-area">
         <div class="screen">
             <div class="game-screen">
-                <h3>Rules:</h3>
-                <p>Rules are the rules.</p>
+                <h3>Game Description:</h3>
+                <p>In this 5-minute game, you’ll be decoding messages written in T9, the old mobile texting system. Each
+                    message is a series of numbers, where each number represents a letter depending on how many times
+                    it’s pressed. For example, "Hello" is written as "4433555555666". Your task is to quickly translate
+                    the code into regular text before the timer runs out. The faster and more accurately you decode, the
+                    higher your score.</p>
+                <p>
+                    <span>Good answer: 2 points</span>
+                    <span>Wrong answer: -1 point</span>
+                    <span>Skip Answer: 0 point</span>
+                </p>
                 <h3>Controls:</h3>
                 <p>
                     <span>End Game: Esc</span>
                     <span>Submit Answer: Enter</span>
                     <span>Skip Answer: Space</span>
                 </p>
+                <p>
+                    <form id="user-form">
+                        <label for="user-name"><strog>Username:</strog></label>
+                        <input type="text" name="username" id="user-name" placeholder="Enter Username" required>
+                    </form>
+                </p>
             </div>
             <div class="game-controls">
-                <button id="launch">Launch Game</button>
+                <button id="start">Start Game</button>
             </div>
         </div>
         <div class="screen hide">
