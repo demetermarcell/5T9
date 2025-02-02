@@ -1,67 +1,85 @@
 /* Importing Custom Nokia Font from: https://www.dafont.com/nokia-cellphone.font*/
 @font-face {
-    font-family: 'NokiaFont';
-    src: url('../font/nokiafc22.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    
+  font-family: "NokiaFont";
+  src: url("../font/nokiafc22.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* Importing Google Font "Oxanium"*/
-@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
 
 /* CSS Variables */
 :root {
-    --brand-primary-font: 'NokiaFont', sans-serif;
-    --brand-secondary-font: 'Oxanium', sans-serif;
-    --brand-dblue: #292F3D;
-    --brand-neon: #95C406;
-    --brand-dgreen: #304807;
-    --brand-lgrey: #E6E7E2;
-    --brand-dgrey: #7F8083;
-    --brand-black: #212727;
-    --brand-lblue: #6BC2ED;
-
+  --brand-primary-font: "NokiaFont", sans-serif;
+  --brand-secondary-font: "Oxanium", sans-serif;
+  --brand-dblue: #292f3d;
+  --brand-neon: #95c406;
+  --brand-dgreen: #304807;
+  --brand-lgrey: #e6e7e2;
+  --brand-dgrey: #7f8083;
+  --brand-black: #212727;
+  --brand-lblue: #6bc2ed;
 }
-
 
 /* Global Styles */
 body {
-    background-color: var(--brand-dblue);
-    font-family: var(--brand-secondary-font);
-    color: var(--brand-lgrey);
-    font-size: medium;
+  background-color: var(--brand-dblue);
+  font-family: var(--brand-secondary-font);
+  color: var(--brand-lgrey);
+  font-size: medium;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .heading {
-    box-sizing: border-box;
-    width: 30%;
-    height: auto;
-    margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
 }
-#game-area {
-    box-sizing: border-box;
-    width: 90%;
-    height: 45vh;
-    margin: auto;
-    padding: 1rem;
+
+.heading > img {
+  height: 100%;
+  max-height: 150px;
+  width: auto;
+  padding: 2.5rem;
 }
 
 .game-screen {
     background-color: var(--brand-neon);
-    color: var(--brand-dgreen);
-    font-family: var(--brand-primary-font);
+  color: var(--brand-dgreen);
+  font-family: var(--brand-primary-font);
+  box-sizing: border-box;
+  width: 80%;
+  height: 30vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-screen span {
+    padding: 0 1rem;
 }
 
 .game-controls {
-    color: var(--brand-lblue);
+  background-color: var(--brand-dblue);
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  gap: 0.5rem;
+  padding:1rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
-
-
 
 /* div{
     background-color: #95C406;

@@ -1,3 +1,5 @@
+// Button controls:
+
 const launchBtn = document.getElementById("launch");
 const endGameBtn = document.getElementById("end-game");
 const restartBtn = document.getElementById("restart");
@@ -27,3 +29,15 @@ function toggleScreen(currentScreen, nextScreen){
     }
 
 
+// Keyboard controls:
+
+document.addEventListener("keydown", keyNav);
+
+function keyNav(e){
+    const allowedKeys = [" ", "Enter", "Escape"];
+    e.preventDefault();
+    if (allowedKeys.includes(e.key)){
+        e.preventDefault();
+        console.log(e.key);
+    }
+}
