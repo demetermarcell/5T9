@@ -90,7 +90,19 @@ body {
 #user-name:focus {
     outline: none; 
   }
-  
+
+/* Timer */
+.timer-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-right: 1.5rem;    
+}
+#timer-display {
+    font-size: 150%;
+}
+
 /* Game Control buttons section */
 .game-controls {
   background-color: var(--brand-dblue);
