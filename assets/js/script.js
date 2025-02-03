@@ -19,15 +19,31 @@ function gameStart (e){
     if (document.getElementById('user-form').checkValidity()) {
         // document.getElementById('user-form').submit(); 
         toggleScreen(0, 1);
-        // timer();
+        timer();
     } else {
         alert("Please fill in the username field.");
     }
 }
 
+/**
+ * This function counts down
+ */
 function timer(){
     const timerDisplay = document.getElementById("timer-display");
-    const timeLeft = 60;
+    let timeLeft = 30;
+    let cuntdown;
+    // Reset timer
+    clearInterval(cuntdown);
+    // Display timeLeft and cuntdown
+    cuntdown = setInterval(() => {
+        let minutes = Math.floor(timeLeft/60);
+        let seconds = timeLeft % 60;
+        // Display timeLeft, MM:SS format
+        timerDisplay.textContent = `${String(minutes).padStart(2,0)}:${String(seconds).padStart(2,0)}`;
+        // Deduct a second from timeLeft
+        timeLeft-- ;
+
+    }, 1000);
 
 }
 
