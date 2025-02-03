@@ -19,7 +19,7 @@
   --brand-lgrey: #e6e7e2;
   --brand-dgrey: #7f8083;
   --brand-black: #212727;
-  --brand-lblue: #6bc2ed;
+  --brand-lblue: #15BBC7;
 }
 
 /* Global Styles */
@@ -28,6 +28,7 @@ body {
   font-family: var(--brand-secondary-font);
   color: var(--brand-lgrey);
   font-size: medium;
+  margin: 0;
 }
 
 .hide {
@@ -94,13 +95,50 @@ body {
 /* Game Control buttons section */
 .game-controls {
   background-color: var(--brand-dblue);
-  width: 100%;
+  width: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   gap: 0.5rem;
   padding: 1rem;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  flex-direction: row;
+}
+
+/* Button styles: */
+
+.btn {
+    background: linear-gradient(var(--brand-lgrey), var(--brand-dgrey));
+    color: var(--brand-black);
+    border: none;
+    height: 3.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.btn:hover{
+    color: var(--brand-lblue)
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-main {
+    border-radius: 45%;
+    width: 70%;
+    font-size: 2rem;
+}
+
+.btn-left {
+    border-radius: 45px 200px 45px 200px;
+    width: 15%;
+}
+
+.btn-right {
+    border-radius: 200px 45px 200px 45px;
+    width: 15%;
 }
