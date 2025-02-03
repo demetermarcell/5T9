@@ -27,7 +27,7 @@
 
     <!-- Main -->
     <div id="game-area">
-        <div class="screen">
+        <div id="screen1" class="screen">
             <div class="game-screen">
                 <h3>Game Description:</h3>
                 <p>In this 5-minute game, you’ll be decoding messages written in T9, the old mobile texting system. Each
@@ -57,9 +57,11 @@
                 <button id="start" class="btn btn-main">Start Game</button>
             </div>
         </div>
-        <div class="screen hide">
+        <div id="screen2" class="screen hide">
             <div class="game-screen">
-                <p>This is the Game</p>
+                <div id="timer-display">Timer</div>
+                <div>Code</div>
+                <div>Answer</div>
             </div>
             <div class="game-controls">
                 <button id="end-game" class="btn btn-left">End Game</button>
@@ -67,7 +69,7 @@
                 <button id="skip" class="btn btn-right">Skip</button>
             </div>
         </div>
-        <div class="screen hide">
+        <div id="screen3" class="screen hide">
             <div class="game-screen">
                 <p>These are the Scores</p>
             </div>

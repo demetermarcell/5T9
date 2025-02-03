@@ -4,17 +4,31 @@ const startBtn = document.getElementById("start");
 const endGameBtn = document.getElementById("end-game");
 const restartBtn = document.getElementById("restart");
 
+//Event Listeners:
 startBtn.addEventListener("click", gameStart);
 endGameBtn.addEventListener("click", gameEnd);
 restartBtn.addEventListener("click", gameRestart);
 
+//Game variables:
+
+
+/**
+ * This function checks if username has value, starts the game or throws alert.
+ */
 function gameStart (e){
     if (document.getElementById('user-form').checkValidity()) {
         // document.getElementById('user-form').submit(); 
         toggleScreen(0, 1);
+        // timer();
     } else {
         alert("Please fill in the username field.");
     }
+}
+
+function timer(){
+    const timerDisplay = document.getElementById("timer-display");
+    const timeLeft = 60;
+
 }
 
 function gameEnd (e){
@@ -42,8 +56,29 @@ document.addEventListener("keydown", keyNav);
 
 function keyNav(e){
     const allowedKeys = [" ", "Enter", "Escape"];
+    const screen1 = document.getElementById("screen1");
+    const screen2 = document.getElementById("screen2");
+    const screen3 = document.getElementById("screen3");
     if (allowedKeys.includes(e.key)){
         e.preventDefault();
         console.log(e.key);
+        // Screen 1 controls:
+        if(e.key === "Enter" && !screen1.classList.contains("hide")){
+            gameStart(e);
+        }
+        // Screen 2 controls:
+        if(e.key === "Escape" && !screen2.classList.contains("hide")){
+            gameEnd(e);
+        }
+        if(e.key === "Enter" && !screen2.classList.contains("hide")){
+            // Function comes here;
+        }
+        if(e.key === " " && !screen2.classList.contains("hide")){
+            // Function comes here;
+        }
+        // Screen 3 controls:
+        if(e.key === "Enter" && !screen3.classList.contains("hide")){
+            gameRestart(e);
+        }
     }
 }
