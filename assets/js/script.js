@@ -54,7 +54,14 @@ function timer() {
 let quiz='';
 let code ='';
 const answer = document.getElementById("answer")
-const wordCollection = [hello, world, game, javascript];
+let wordCollection = [
+    "apple", "banana", "cherry",
+];
+/*"date", "elderberry", "fig", "grape", "honeydew", 
+    "kiwi", "lemon", "mango", "nectarine", "orange", "papaya", "quince", "raspberry", 
+    "strawberry", "tangerine", "ugli", "vanilla", "watermelon", "xigua", "yam", "zucchini",
+    "apricot", "blueberry", "coconut", "dragonfruit", "grapefruit", "mulberry"
+*/
 
 function gameLoop() {
     answer.value="";
@@ -74,6 +81,12 @@ function shuffleWords(wordCollection){
 };
 
 function getQuiz(){
+    if (wordCollection.length>0){
+        shuffleWords(wordCollection);
+        quiz = wordCollection.pop();
+    } else {
+        gameEnd();
+    }
 };
 
 function convertToCode(){
