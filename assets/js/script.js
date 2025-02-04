@@ -52,7 +52,8 @@ function timer() {
 // Game Loop:
 //Game variables:
 let quiz='';
-let code ='';
+let code ='asd';
+const question = document.getElementById("question");
 const answer = document.getElementById("answer")
 let wordCollection = [
     "apple", "banana", "cherry",
@@ -65,7 +66,8 @@ let wordCollection = [
 
 function gameLoop() {
     answer.value="";
-    
+    getQuiz();
+    convertToCode(quiz);
 };
 
 /**
@@ -74,12 +76,15 @@ function gameLoop() {
 function shuffleWords(wordCollection){
     // Shuffling wordCollection with Fisher-Yates algorythm:
     for(let i = wordCollection.length -1; i > 0; i--) {
-        const j = Math.floor(Math.random()*i+1);
+        const j = Math.floor(Math.random() * (i+1));
         [wordCollection[i], wordCollection[j]] = [wordCollection[j], wordCollection[i]]
     }
     return wordCollection;
 };
 
+/**
+ * This function assings value to quiz and shortens the wordCollection array.
+ */
 function getQuiz(){
     if (wordCollection.length>0){
         shuffleWords(wordCollection);
@@ -89,7 +94,7 @@ function getQuiz(){
     }
 };
 
-function convertToCode(){
+function convertToCode(quiz){
     const t9Map = {
         'a': '2', 'b': '22', 'c': '222',
         'd': '3', 'e': '33', 'f': '333',
@@ -101,7 +106,13 @@ function convertToCode(){
         'w': '9', 'x': '99', 'y': '999', 'z': '9999',
         ' ': '0'
     }
-    
+    code = '';
+
+    for (let char of quiz) {
+        code += t9Map[char];
+    }
+
+    question.textContent = code;
 };
 
 function checkAnswer(){
