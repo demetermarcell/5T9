@@ -43,7 +43,7 @@ function timer() {
     // Deduct a second from timeLeft
     if (timeLeft === 0) {
       clearInterval(cuntdown);
-    //   gameEnd();
+      //   gameEnd();
     }
     timeLeft--;
   }, 1000);
@@ -51,13 +51,11 @@ function timer() {
 
 // Game Loop:
 //Game variables:
-let quiz='';
-let code ='asd';
+let quiz = "";
+let code = "asd";
 const question = document.getElementById("question");
-const answer = document.getElementById("answer")
-let wordCollection = [
-    "apple", "banana", "cherry",
-];
+const answer = document.getElementById("answer");
+let wordCollection = ["apple", "banana", "cherry"];
 /*"date", "elderberry", "fig", "grape", "honeydew", 
     "kiwi", "lemon", "mango", "nectarine", "orange", "papaya", "quince", "raspberry", 
     "strawberry", "tangerine", "ugli", "vanilla", "watermelon", "xigua", "yam", "zucchini",
@@ -65,63 +63,83 @@ let wordCollection = [
 */
 
 function gameLoop() {
-    answer.value="";
-    getQuiz();
-    convertToCode(quiz);
-};
+  answer.value = "";
+  getQuiz();
+  convertToCode(quiz);
+}
 
 /**
  * This function shuffles the wordCollection array.
  */
-function shuffleWords(wordCollection){
-    // Shuffling wordCollection with Fisher-Yates algorythm:
-    for(let i = wordCollection.length -1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i+1));
-        [wordCollection[i], wordCollection[j]] = [wordCollection[j], wordCollection[i]]
-    }
-    return wordCollection;
-};
+function shuffleWords(wordCollection) {
+  // Shuffling wordCollection with Fisher-Yates algorythm:
+  for (let i = wordCollection.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [wordCollection[i], wordCollection[j]] = [
+      wordCollection[j],
+      wordCollection[i],
+    ];
+  }
+  return wordCollection;
+}
 
 /**
  * This function assings value to quiz and shortens the wordCollection array.
  */
-function getQuiz(){
-    if (wordCollection.length>0){
-        shuffleWords(wordCollection);
-        quiz = wordCollection.pop();
-    } else {
-        gameEnd();
-    }
-};
+function getQuiz() {
+  if (wordCollection.length > 0) {
+    shuffleWords(wordCollection);
+    quiz = wordCollection.pop();
+  } else {
+    gameEnd();
+  }
+}
 
-function convertToCode(quiz){
-    const t9Map = {
-        'a': '2', 'b': '22', 'c': '222',
-        'd': '3', 'e': '33', 'f': '333',
-        'g': '4', 'h': '44', 'i': '444',
-        'j': '5', 'k': '55', 'l': '555',
-        'm': '6', 'n': '66', 'o': '666',
-        'p': '7', 'q': '77', 'r': '777', 's': '7777',
-        't': '8', 'u': '88', 'v': '888',
-        'w': '9', 'x': '99', 'y': '999', 'z': '9999',
-        ' ': '0'
-    }
-    code = '';
+/**
+ * This function translates the selected quiz to the T9 numeric code.
+ */
+function convertToCode(quiz) {
+  const t9Map = {
+    a: "2",
+    b: "22",
+    c: "222",
+    d: "3",
+    e: "33",
+    f: "333",
+    g: "4",
+    h: "44",
+    i: "444",
+    j: "5",
+    k: "55",
+    l: "555",
+    m: "6",
+    n: "66",
+    o: "666",
+    p: "7",
+    q: "77",
+    r: "777",
+    s: "7777",
+    t: "8",
+    u: "88",
+    v: "888",
+    w: "9",
+    x: "99",
+    y: "999",
+    z: "9999",
+    " ": "0",
+  };
+  code = "";
 
-    for (let char of quiz) {
-        code += t9Map[char];
-    }
+  for (let char of quiz) {
+    code += t9Map[char];
+  }
 
-    question.textContent = code;
-};
+  question.textContent = code;
+}
 
-function checkAnswer(){
+function checkAnswer() {}
 
-};
-
-function calculateScore(){
-
-};
+function calculateScore() {}
 
 // End Game:
 function gameEnd(e) {
