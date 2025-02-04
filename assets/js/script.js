@@ -9,8 +9,6 @@ startBtn.addEventListener("click", gameStart);
 endGameBtn.addEventListener("click", gameEnd);
 restartBtn.addEventListener("click", gameRestart);
 
-//Game variables:
-
 /**
  * This function checks if username has value, starts the game or throws alert.
  */
@@ -19,6 +17,7 @@ function gameStart(e) {
     // document.getElementById('user-form').submit();
     toggleScreen(0, 1);
     timer();
+    gameLoop();
   } else {
     alert("Please fill in the username field.");
   }
@@ -50,6 +49,57 @@ function timer() {
   }, 1000);
 }
 
+// Game Loop:
+//Game variables:
+let quiz='';
+let code ='';
+const answer = document.getElementById("answer")
+const wordCollection = [hello, world, game, javascript];
+
+function gameLoop() {
+    answer.value="";
+    
+};
+
+/**
+ * This function shuffles the wordCollection array.
+ */
+function shuffleWords(wordCollection){
+    // Shuffling wordCollection with Fisher-Yates algorythm:
+    for(let i = wordCollection.length -1; i > 0; i--) {
+        const j = Math.floor(Math.random()*i+1);
+        [wordCollection[i], wordCollection[j]] = [wordCollection[j], wordCollection[i]]
+    }
+    return wordCollection;
+};
+
+function getQuiz(){
+};
+
+function convertToCode(){
+    const t9Map = {
+        'a': '2', 'b': '22', 'c': '222',
+        'd': '3', 'e': '33', 'f': '333',
+        'g': '4', 'h': '44', 'i': '444',
+        'j': '5', 'k': '55', 'l': '555',
+        'm': '6', 'n': '66', 'o': '666',
+        'p': '7', 'q': '77', 'r': '777', 's': '7777',
+        't': '8', 'u': '88', 'v': '888',
+        'w': '9', 'x': '99', 'y': '999', 'z': '9999',
+        ' ': '0'
+    }
+    
+};
+
+function checkAnswer(){
+
+};
+
+function calculateScore(){
+
+};
+
+// End Game:
 function gameEnd(e) {
   toggleScreen(1, 2);
 }
