@@ -9,7 +9,7 @@ const skipBtn = document.getElementById("skip");
 startBtn.addEventListener("click", startGame);
 endGameBtn.addEventListener("click", endGame);
 restartBtn.addEventListener("click", restartGame);
-submitBtn.addEventListener("click,", checkAnswer);
+submitBtn.addEventListener("click", checkAnswer);
 skipBtn.addEventListener("click", gameLoop);
 
 // Keyboard controls:
@@ -35,7 +35,7 @@ function keyNav(e) {
       endGame(e);
     }
     if (e.key === "Enter" && !inGameScreen.classList.contains("hide")) {
-      checkAnswer();
+      checkAnswer(e);
     }
     if (e.key === " " && !inGameScreen.classList.contains("hide")) {
       gameLoop();
@@ -92,12 +92,11 @@ let quiz = "";
 let code = "";
 const question = document.getElementById("question");
 const answer = document.getElementById("answer");
-let wordCollection = ["apple", "banana", "cherry"];
-/*"date", "elderberry", "fig", "grape", "honeydew", 
+let isCorrectAnswer;
+let wordCollection = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", 
     "kiwi", "lemon", "mango", "nectarine", "orange", "papaya", "quince", "raspberry", 
     "strawberry", "tangerine", "ugli", "vanilla", "watermelon", "xigua", "yam", "zucchini",
-    "apricot", "blueberry", "coconut", "dragonfruit", "grapefruit", "mulberry"
-*/
+    "apricot", "blueberry", "coconut", "dragonfruit", "grapefruit", "mulberry"];
 
 /**
  * This function counts down and ends game when hit 00:00.
@@ -202,15 +201,27 @@ function convertToCode(quiz) {
   return code;
 }
 
-function checkAnswer() {}
+/**
+ * This function check if answer has value, then decides if answer is correct.
+ */
+function checkAnswer(e) {
+    if(answer.value){
+        isCorrectAnswer = quiz === answer.value;
+        calculateScore();
+        gameLoop();
+    }
+}
 
-function calculateScore() {}
+function calculateScore() {
+    console.log(` ${quiz} ${answer.value} same: ${isCorrectAnswer}`);
+
+}
 
 // Testing:
 
 // convertToCode function testing:
 
-const testing = true;
+const testing = false;
 
 const assert = (quiz, expected) => {
   const result = convertToCode(quiz);
