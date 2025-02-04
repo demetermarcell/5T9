@@ -1,20 +1,59 @@
-// Button controls:
-
+// Control Buttons:
 const startBtn = document.getElementById("start");
 const endGameBtn = document.getElementById("end-game");
 const restartBtn = document.getElementById("restart");
+const submitBtn = document.getElementById("submit");
+const skipBtn = document.getElementById("skip");
 
 //Event Listeners:
 startBtn.addEventListener("click", startGame);
 endGameBtn.addEventListener("click", endGame);
 restartBtn.addEventListener("click", restartGame);
+submitBtn.addEventListener("click,", checkAnswer);
+skipBtn.addEventListener("click", gameLoop);
+
+// Keyboard controls:
+document.addEventListener("keydown", keyNav);
+
+/**
+ * This function handles key navigations.
+ */
+function keyNav(e) {
+  const allowedKeys = [" ", "Enter", "Escape"];
+  const startGameScreen = document.getElementById("start-game-screen");
+  const inGameScreen = document.getElementById("in-game-screen");
+  const endGameScreen = document.getElementById("end-game-screen");
+  if (allowedKeys.includes(e.key)) {
+    e.preventDefault();
+    console.log(e.key);
+    // startGameScreen controls:
+    if (e.key === "Enter" && !startGameScreen.classList.contains("hide")) {
+      gameStart(e);
+    }
+    // inGameScreen controls:
+    if (e.key === "Escape" && !inGameScreen.classList.contains("hide")) {
+      endGame(e);
+    }
+    if (e.key === "Enter" && !inGameScreen.classList.contains("hide")) {
+      checkAnswer();
+    }
+    if (e.key === " " && !inGameScreen.classList.contains("hide")) {
+      gameLoop();
+    }
+    // endGameScreen controls:
+    if (e.key === "Enter" && !endGameScreen.classList.contains("hide")) {
+      restartGame(e);
+    }
+  }
+}
+
+// Game control functions:
 
 /**
  * This function checks if username has value, starts the game or throws alert.
  */
 function startGame(e) {
   if (document.getElementById("user-form").checkValidity()) {
-    // document.getElementById('user-form').submit();
     toggleScreen(0, 1);
     timer();
     gameLoop();
@@ -22,6 +61,43 @@ function startGame(e) {
     alert("Please fill in the username field.");
   }
 }
+
+/**
+ * This function ends the game and changes screen to endGameScreen.
+ */
+function endGame(e) {
+  toggleScreen(1, 2);
+}
+
+/**
+ * This function restarts the game.
+ */
+function restartGame(e) {
+  toggleScreen(2, 0);
+}
+
+/**
+ * This function changes between screens on button trigger.
+ */
+function toggleScreen(currentScreen, nextScreen) {
+  const screens = document.querySelectorAll(".screen");
+  screens.forEach((screen, index) => {
+    screen.classList.toggle("hide", index !== nextScreen);
+  });
+}
+
+// Game Loop:
+// In game variables:
+let quiz = "";
+let code = "";
+const question = document.getElementById("question");
+const answer = document.getElementById("answer");
+let wordCollection = ["apple", "banana", "cherry"];
+/*"date", "elderberry", "fig", "grape", "honeydew", 
+    "kiwi", "lemon", "mango", "nectarine", "orange", "papaya", "quince", "raspberry", 
+    "strawberry", "tangerine", "ugli", "vanilla", "watermelon", "xigua", "yam", "zucchini",
+    "apricot", "blueberry", "coconut", "dragonfruit", "grapefruit", "mulberry"
+*/
 
 /**
  * This function counts down and ends game when hit 00:00.
@@ -48,19 +124,6 @@ function timer() {
     timeLeft--;
   }, 1000);
 }
-
-// Game Loop:
-//Game variables:
-let quiz = "";
-let code = "";
-const question = document.getElementById("question");
-const answer = document.getElementById("answer");
-let wordCollection = ["apple", "banana", "cherry"];
-/*"date", "elderberry", "fig", "grape", "honeydew", 
-    "kiwi", "lemon", "mango", "nectarine", "orange", "papaya", "quince", "raspberry", 
-    "strawberry", "tangerine", "ugli", "vanilla", "watermelon", "xigua", "yam", "zucchini",
-    "apricot", "blueberry", "coconut", "dragonfruit", "grapefruit", "mulberry"
-*/
 
 function gameLoop() {
   answer.value = "";
@@ -137,87 +200,31 @@ function convertToCode(quiz) {
   question.textContent = code;
 
   return code;
-};
+}
 
 function checkAnswer() {}
 
 function calculateScore() {}
 
-// End Game:
-function endGame(e) {
-  toggleScreen(1, 2);
-}
-
-function restartGame(e) {
-  toggleScreen(2, 0);
-  // document.getElementById("user-name").value = ""; empties input value
-}
-
-/**
- * This function changes between screens on button trigger.
- */
-function toggleScreen(currentScreen, nextScreen) {
-  const screens = document.querySelectorAll(".screen");
-  screens.forEach((screen, index) => {
-    screen.classList.toggle("hide", index !== nextScreen);
-  });
-}
-
-/**
- * Keyboard controls:
- */
-document.addEventListener("keydown", keyNav);
-
-function keyNav(e) {
-  const allowedKeys = [" ", "Enter", "Escape"];
-  const startGameScreen = document.getElementById("start-game-screen");
-  const inGameScreen = document.getElementById("in-game-screen");
-  const endGameScreen = document.getElementById("end-game-screen");
-  if (allowedKeys.includes(e.key)) {
-    e.preventDefault();
-    console.log(e.key);
-    // Screen 1 controls:
-    if (e.key === "Enter" && !startGameScreen.classList.contains("hide")) {
-      gameStart(e);
-    }
-    // Screen 2 controls:
-    if (e.key === "Escape" && !inGameScreen.classList.contains("hide")) {
-      endGame(e);
-    }
-    if (e.key === "Enter" && !inGameScreen.classList.contains("hide")) {
-      // Function comes here;
-    }
-    if (e.key === " " && !inGameScreen.classList.contains("hide")) {
-      // Function comes here;
-    }
-    // Screen 3 controls:
-    if (e.key === "Enter" && !endGameScreen.classList.contains("hide")) {
-      restartGame(e);
-    }
-  }
-}
-
-
 // Testing:
 
-// Convert to code function testing:
+// convertToCode function testing:
 
 const testing = true;
 
 const assert = (quiz, expected) => {
-    const result = convertToCode(quiz);
-    if (result !== expected) {
-        console.log(`Test case failed, expected ${expected}, but got ${result}`);
-    }
-    else {
-        console.log("Test Passed");
-    };
+  const result = convertToCode(quiz);
+  if (result !== expected) {
+    console.log(`Test case failed, expected ${expected}, but got ${result}`);
+  } else {
+    console.log("Test Passed");
+  }
 };
 
 if (testing) {
-    assert("cica" , "2224442222");
-    assert("kutya" , "558889992" );
-    assert("code institute" , "22266633304446677778444888833");
-    assert("project two" , "77776665332228089666");
-     assert("test case" , "123")  //will fail test
-};
+  assert("cica", "2224442222");
+  assert("kutya", "558889992");
+  assert("code institute", "22266633304446677778444888833");
+  assert("project two", "77776665332228089666");
+  assert("test case", "123"); //will fail test
+}
