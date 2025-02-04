@@ -27,9 +27,9 @@
 
     <!-- Main -->
     <div id="game-area">
-        <div id="screen1" class="screen">
+        <div id="start-game-screen" class="screen">
             <div class="game-screen">
-                <h3>Game Description:</h3>
+                <h2>Game Description:</h2>
                 <p>In this 5-minute game, you’ll be decoding messages written in T9, the old mobile texting system. Each
                     message is a series of numbers, where each number represents a letter depending on how many times
                     it’s pressed. For example, "Hello" is written as "4433555555666". Your task is to quickly translate
@@ -57,13 +57,20 @@
                 <button id="start" class="btn btn-main">Start Game</button>
             </div>
         </div>
-        <div id="screen2" class="screen hide">
+        <div id="in-game-screen" class="screen hide">
             <div class="game-screen">
                 <div class="timer-container">
                     <div id="timer-display">05:00</div>
                 </div>
-                <div id="question">Code</div>
-                <div><input type="text" id="answer"></div>
+                <div class="qa-container">
+                    <div>
+                        <p>Code:</p>
+                        <p id="question">code</p>
+                    </div>
+                    <div>
+                        <input type="text" name="answer" id="answer" placeholder="Your answer" aria-label="Enter your answer here!">
+                    </div>
+                </div>
             </div>
             <div class="game-controls">
                 <button id="end-game" class="btn btn-left">End Game</button>
@@ -71,7 +78,7 @@
                 <button id="skip" class="btn btn-right">Skip</button>
             </div>
         </div>
-        <div id="screen3" class="screen hide">
+        <div id="end-game-screen" class="screen hide">
             <div class="game-screen">
                 <p>These are the Scores</p>
             </div>

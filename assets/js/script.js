@@ -5,14 +5,14 @@ const endGameBtn = document.getElementById("end-game");
 const restartBtn = document.getElementById("restart");
 
 //Event Listeners:
-startBtn.addEventListener("click", gameStart);
-endGameBtn.addEventListener("click", gameEnd);
-restartBtn.addEventListener("click", gameRestart);
+startBtn.addEventListener("click", startGame);
+endGameBtn.addEventListener("click", endGame);
+restartBtn.addEventListener("click", restartGame);
 
 /**
  * This function checks if username has value, starts the game or throws alert.
  */
-function gameStart(e) {
+function startGame(e) {
   if (document.getElementById("user-form").checkValidity()) {
     // document.getElementById('user-form').submit();
     toggleScreen(0, 1);
@@ -43,7 +43,7 @@ function timer() {
     // Deduct a second from timeLeft
     if (timeLeft === 0) {
       clearInterval(cuntdown);
-      //   gameEnd();
+      //   endGame();
     }
     timeLeft--;
   }, 1000);
@@ -52,7 +52,7 @@ function timer() {
 // Game Loop:
 //Game variables:
 let quiz = "";
-let code = "asd";
+let code = "";
 const question = document.getElementById("question");
 const answer = document.getElementById("answer");
 let wordCollection = ["apple", "banana", "cherry"];
@@ -64,7 +64,7 @@ let wordCollection = ["apple", "banana", "cherry"];
 
 function gameLoop() {
   answer.value = "";
-  getQuiz();
+  prepareQuiz();
   convertToCode(quiz);
 }
 
@@ -86,12 +86,12 @@ function shuffleWords(wordCollection) {
 /**
  * This function assings value to quiz and shortens the wordCollection array.
  */
-function getQuiz() {
+function prepareQuiz() {
   if (wordCollection.length > 0) {
     shuffleWords(wordCollection);
     quiz = wordCollection.pop();
   } else {
-    gameEnd();
+    endGame();
   }
 }
 
@@ -135,18 +135,20 @@ function convertToCode(quiz) {
   }
 
   question.textContent = code;
-}
+
+  return code;
+};
 
 function checkAnswer() {}
 
 function calculateScore() {}
 
 // End Game:
-function gameEnd(e) {
+function endGame(e) {
   toggleScreen(1, 2);
 }
 
-function gameRestart(e) {
+function restartGame(e) {
   toggleScreen(2, 0);
   // document.getElementById("user-name").value = ""; empties input value
 }
@@ -168,29 +170,54 @@ document.addEventListener("keydown", keyNav);
 
 function keyNav(e) {
   const allowedKeys = [" ", "Enter", "Escape"];
-  const screen1 = document.getElementById("screen1");
-  const screen2 = document.getElementById("screen2");
-  const screen3 = document.getElementById("screen3");
+  const startGameScreen = document.getElementById("start-game-screen");
+  const inGameScreen = document.getElementById("in-game-screen");
+  const endGameScreen = document.getElementById("end-game-screen");
   if (allowedKeys.includes(e.key)) {
     e.preventDefault();
     console.log(e.key);
     // Screen 1 controls:
-    if (e.key === "Enter" && !screen1.classList.contains("hide")) {
+    if (e.key === "Enter" && !startGameScreen.classList.contains("hide")) {
       gameStart(e);
     }
     // Screen 2 controls:
-    if (e.key === "Escape" && !screen2.classList.contains("hide")) {
-      gameEnd(e);
+    if (e.key === "Escape" && !inGameScreen.classList.contains("hide")) {
+      endGame(e);
     }
-    if (e.key === "Enter" && !screen2.classList.contains("hide")) {
+    if (e.key === "Enter" && !inGameScreen.classList.contains("hide")) {
       // Function comes here;
     }
-    if (e.key === " " && !screen2.classList.contains("hide")) {
+    if (e.key === " " && !inGameScreen.classList.contains("hide")) {
       // Function comes here;
     }
     // Screen 3 controls:
-    if (e.key === "Enter" && !screen3.classList.contains("hide")) {
-      gameRestart(e);
+    if (e.key === "Enter" && !endGameScreen.classList.contains("hide")) {
+      restartGame(e);
     }
   }
 }
+
+
+// Testing:
+
+// Convert to code function testing:
+
+const testing = true;
+
+const assert = (quiz, expected) => {
+    const result = convertToCode(quiz);
+    if (result !== expected) {
+        console.log(`Test case failed, expected ${expected}, but got ${result}`);
+    }
+    else {
+        console.log("Test Passed");
+    };
+};
+
+if (testing) {
+    assert("cica" , "2224442222");
+    assert("kutya" , "558889992" );
+    assert("code institute" , "22266633304446677778444888833");
+    assert("project two" , "77776665332228089666");
+     assert("test case" , "123")  //will fail test
+};
