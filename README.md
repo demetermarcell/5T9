@@ -7,7 +7,7 @@
 Players must decode as many messages as possible within 5 minutes, translating number sequences into readable text using the classic T9 mobile input system.
 The game’s aesthetic draws heavy inspiration from the iconic Nokia 3310, evoking a wave of nostalgia for those who grew up in the late '90s and early 2000s. With its retro pixel-style interface, 5T9 offers a fun and challenging experience that blends old-school mobile tech with a modern gaming twist. Whether you're reliving the golden era of texting or discovering T9 for the first time, this game is a perfect mix of memory, speed, and logic.
 
-<img src="screenshot/responsive-design.webp" alt="Responsive Mockups" width="600" height="375" >
+<img src="screenshots/responsive-design.webp" alt="Responsive Mockups" width="600" height="375" >
 
 ## Features
 
@@ -22,7 +22,7 @@ The game’s aesthetic draws heavy inspiration from the iconic Nokia 3310, evoki
 - The user has to enter a Username before starting the game loop, otherwise the system throws an alert message.
 - The user can initiate the game by clicking the "Start Game" button or hit "Enter" on the keyboard.
 
-<img src="screenshot/start-game-screen.webp" alt="Start Game Screen screenshot" width="600" height="320" >
+<img src="screenshots/start-game-screen.webp" alt="Start Game Screen screenshot" width="600" height="320" >
 
 ### In-Game Screen
 - The In-Game screen includes a timer, a question, an input for the answer and the game controls.
@@ -33,13 +33,13 @@ The game’s aesthetic draws heavy inspiration from the iconic Nokia 3310, evoki
     - Submit button: Pressing the "Submit" button or hitting "Enter" on the keyboard validates the answer, calculates the score, and starts a new round with a fresh question.
     - Skip button: Pressing the "Skip" button or hitting "Space" on the keyboard starts a new round with a fresh question without altering the user's score.
 
-<img src="screenshot/in-game-screen.webp" alt="In-Game Screen screenshot" width="600" height="320" >
+<img src="screenshots/in-game-screen.webp" alt="In-Game Screen screenshot" width="600" height="320" >
 
 ### End Game Screen
 - The user is shown a personalized end game message along with their final score.
 - Pressing the "Restart Game" button or or hitting "Enter" on the keyboard redirects the user to the Start Game screen.
 
-<img src="screenshot/end-game-screen.webp" alt="End Game Screen screenshot" width="600" height="320" >
+<img src="screenshots/end-game-screen.webp" alt="End Game Screen screenshot" width="600" height="320" >
 
 ### Features left to Implement
 - During testing, it was found that the game can be quite challenging for new players at first. It would be helpful to add an "Easy Mode" where the keyboard mapping is displayed at the bottom of the screen to assist with quicker learning.
