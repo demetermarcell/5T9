@@ -27,8 +27,13 @@ body {
   background-color: var(--brand-dblue);
   font-family: var(--brand-secondary-font);
   color: var(--brand-lgrey);
-  /* font-size: medium; */
   margin: 0;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
 }
 
 .hide {
@@ -62,8 +67,8 @@ header img {
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -132,6 +137,20 @@ input:focus {
   text-align: center;
 }
 
+/* End Game Message */
+#message h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+#message p {
+    font-size: 2rem;
+}
+
+#message span {
+    font-weight: bold;
+}
+
 /* Game Control buttons section */
 .game-controls {
   background-color: var(--brand-dblue);
@@ -141,9 +160,8 @@ input:focus {
   align-items: center;
   gap: 0.5rem;
   padding: 1rem;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-left: auto;
+  margin-right: auto;
   flex-direction: row;
 }
 
@@ -183,40 +201,84 @@ input:focus {
   width: 15%;
 }
 
+/* Footer */
+footer {
+    color: var(--brand-lgrey);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    /* font-weight: bold; */
+}
+footer div {
+    padding: 0.2rem;
+    display: flex;
+    flex-direction: row;
+}
+footer h3 {
+    color: var(--brand-neon);
+    margin: 0.5rem;
+}
+footer p {
+    padding: 0 0.6rem;
+    text-align: center;
+    margin: 0.3rem;
+}
+
 /* Media queries */
 /* Small, mobile devices */
 @media screen and (max-width: 430px) {
-    body{
-        font-size: small;
-    }
-    /* Input */
-    input{
-        font-size: 1.5rem;
-    }
-    /* Timer */
-    #timer-display {
-        font-size: 1.2rem;
-      }
-    
-    /* QA container */
-    .qa-container p {
-        font-size: 1.5rem;
-      }
-      
-      #question {
-        font-size: 1.8rem;
-      }
-      
-      #answer {
-        font-size: 2rem;
-      }
+  body {
+    font-size: small;
+  }
+  /* Input */
+  input {
+    font-size: 1.5rem;
+  }
+  /* Timer */
+  #timer-display {
+    font-size: 1.2rem;
+  }
 
-      /* Button styles: */
-      .btn {
-        font-size: 0.8rem;
-      }
-      .btn-main {
-        font-size: 1.5rem;
-      }
-      
+  /* QA container */
+  .qa-container p {
+    font-size: 1.5rem;
+  }
+
+  #question {
+    font-size: 1.8rem;
+  }
+
+  #answer {
+    font-size: 2rem;
+  }
+
+  /* End Game Message */
+#message h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+#message p {
+    font-size: 1rem;
+}
+
+#message span {
+    font-weight: bold;
+}
+
+  /* Button styles: */
+  .btn {
+    font-size: 0.8rem;
+  }
+  .btn-main {
+    font-size: 1.5rem;
+  }
+
+  /* Footer */
+  footer div {
+    flex-direction: column;
+}
 }

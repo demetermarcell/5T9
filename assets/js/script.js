@@ -54,7 +54,7 @@ function keyNav(e) {
  */
 function startGame(e) {
   if (document.getElementById("user-form").checkValidity()) {
-    toggleScreen(0, 1);
+    toggleScreen(1);
     timer();
     gameLoop();
   } else {
@@ -67,24 +67,28 @@ function startGame(e) {
  */
 function endGame(e) {
   displayMessage();
-  toggleScreen(1, 2);
+  toggleScreen(2);
 }
 
 /**
  * This function restarts the game.
  */
 function restartGame(e) {
-  toggleScreen(2, 0);
+  toggleScreen(0);
   location.reload();
 }
 
 /**
  * This function changes between screens on button trigger.
  */
-function toggleScreen(currentScreen, nextScreen) {
+function toggleScreen(nextScreen) {
   const screens = document.querySelectorAll(".screen");
+  const footerControls = document.querySelectorAll(".footer-control");
   screens.forEach((screen, index) => {
     screen.classList.toggle("hide", index !== nextScreen);
+  });
+  footerControls.forEach((controls, index) => {
+    controls.classList.toggle("hide", index !== nextScreen);
   });
 }
 
@@ -432,9 +436,11 @@ const calculateScore = () => {
 function displayMessage() {
   const message = document.getElementById("message");
   const username = document.getElementById("user-name").value;
-  message.textContent = `Dear ${username}!
-    Thank you for playing the game.
-    Your score is: ${score}`;
+  message.innerHTML = `
+  <h2>Dear ${username}!</h2>
+  <p>Thank you for playing the game.</p>
+  <p>Your score is: <span>${score}</span></p>
+`;
 }
 
 // Testing:
