@@ -28,7 +28,7 @@ function keyNav(e) {
     console.log(e.key);
     // startGameScreen controls:
     if (e.key === "Enter" && !startGameScreen.classList.contains("hide")) {
-      gameStart(e);
+      startGame(e);
     }
     // inGameScreen controls:
     if (e.key === "Escape" && !inGameScreen.classList.contains("hide")) {
@@ -58,7 +58,7 @@ function startGame(e) {
     timer();
     gameLoop();
   } else {
-    alert("Please fill in the username field.");
+    alert("Please provide a username.");
   }
 }
 
@@ -66,7 +66,7 @@ function startGame(e) {
  * This function ends the game and changes screen to endGameScreen.
  */
 function endGame(e) {
-    displayMessage();
+  displayMessage();
   toggleScreen(1, 2);
 }
 
@@ -75,6 +75,7 @@ function endGame(e) {
  */
 function restartGame(e) {
   toggleScreen(2, 0);
+  location.reload();
 }
 
 /**
@@ -88,24 +89,225 @@ function toggleScreen(currentScreen, nextScreen) {
 }
 
 // Game Loop:
-// In game variables:
+// In-Game variables:
 let quiz = "";
 let code = "";
 const question = document.getElementById("question");
 const answer = document.getElementById("answer");
 let isCorrectAnswer;
 let score = 0;
-let wordCollection = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", 
-    "kiwi", "lemon", "mango", "nectarine", "orange", "papaya", "quince", "raspberry", 
-    "strawberry", "tangerine", "ugli", "vanilla", "watermelon", "xigua", "yam", "zucchini",
-    "apricot", "blueberry", "coconut", "dragonfruit", "grapefruit", "mulberry"];
+let wordCollection = [
+  "nokia",
+  "code institute",
+  "javascript",
+  "apple",
+  "banana",
+  "soccer",
+  "guitar",
+  "laptop",
+  "bicycle",
+  "sunset",
+  "planet",
+  "winter",
+  "summer",
+  "pencil",
+  "notebook",
+  "airplane",
+  "kitchen",
+  "library",
+  "holiday",
+  "dolphin",
+  "tiger",
+  "jungle",
+  "coffee",
+  "cookie",
+  "sunrise",
+  "lantern",
+  "stadium",
+  "painter",
+  "theater",
+  "rainbow",
+  "concert",
+  "morning",
+  "battery",
+  "charger",
+  "cabinet",
+  "blanket",
+  "printer",
+  "firefly",
+  "balloon",
+  "penguin",
+  "glacier",
+  "avocado",
+  "cushion",
+  "necklace",
+  "bluebird",
+  "festival",
+  "puzzle",
+  "journey",
+  "tornado",
+  "builder",
+  "diamond",
+  "cupcake",
+  "mystery",
+  "treetop",
+  "village",
+  "harvest",
+  "sandwich",
+  "bookmark",
+  "firework",
+  "airship",
+  "backpack",
+  "corridor",
+  "sunshine",
+  "wildfire",
+  "bookcase",
+  "chocolates",
+  "handshake",
+  "volcano",
+  "elephant",
+  "friendly",
+  "campfire",
+  "umbrella",
+  "football",
+  "mountain",
+  "mermaid",
+  "whale",
+  "seagull",
+  "skylight",
+  "caramel",
+  "playground",
+  "helicopter",
+  "blueberry",
+  "paradise",
+  "whisper",
+  "treasure",
+  "carnival",
+  "bracelet",
+  "fireplace",
+  "marathon",
+  "strawberry",
+  "calendar",
+  "motorbike",
+  "skateboard",
+  "waterfall",
+  "flashlight",
+  "happiness",
+  "telephone",
+  "creativity",
+  "basketball",
+  "friendship",
+  "companion",
+  "tangerine",
+  "cathedral",
+  "honeymoon",
+  "butterfly",
+  "lighthouse",
+  "snowflake",
+  "speedboat",
+  "drifting",
+  "adventure",
+  "volleyball",
+  "detective",
+  "microwave",
+  "wrestling",
+  "trekking",
+  "gardening",
+  "lightning",
+  "chemistry",
+  "astronaut",
+  "brilliant",
+  "sapphire",
+  "expedition",
+  "celebrate",
+  "mechanic",
+  "monkey",
+  "crystal",
+  "mountaineer",
+  "starfruit",
+  "paintbrush",
+  "sunflower",
+  "horizon",
+  "silhouette",
+  "campground",
+  "telescope",
+  "starlight",
+  "blueprint",
+  "storytelling",
+  "firefighter",
+  "motorcycle",
+  "apartment",
+  "friend",
+  "festival",
+  "vacation",
+  "landscape",
+  "restaurant",
+  "universe",
+  "detective",
+  "learning",
+  "shopping",
+  "backyard",
+  "skyscraper",
+  "nightmare",
+  "invention",
+  "baseball",
+  "wonderful",
+  "sandcastle",
+  "carpenter",
+  "champagne",
+  "passenger",
+  "sculpture",
+  "electricity",
+  "mechanism",
+  "fireworks",
+  "whimsical",
+  "lumberjack",
+  "honeycomb",
+  "persistence",
+  "dictionary",
+  "chessboard",
+  "flamingo",
+  "carnivore",
+  "butterscotch",
+  "reflection",
+  "atmosphere",
+  "mountaineering",
+  "masterpiece",
+  "countryside",
+  "harmonious",
+  "silhouette",
+  "symphony",
+  "photograph",
+  "underwater",
+  "programming",
+  "basketball",
+  "celebration",
+  "skateboarding",
+  "watermelon",
+  "tranquility",
+  "butterflies",
+  "headphones",
+  "playground",
+  "conversation",
+  "chocolates",
+  "firecracker",
+  "electricity",
+  "handwriting",
+  "enthusiasm",
+  "spaghetti",
+  "appreciate",
+  "wonderland",
+  "hospitality",
+  "journalist",
+];
 
+// In-Game functions
 /**
  * This function counts down and ends game when hit 00:00.
  */
 function timer() {
   const timerDisplay = document.getElementById("timer-display");
-  let timeLeft = 10;
+  let timeLeft = 300; //5 minutes in seconds
   let cuntdown;
   // Reset timer
   clearInterval(cuntdown);
@@ -120,17 +322,19 @@ function timer() {
     // Deduct a second from timeLeft
     if (timeLeft === 0) {
       clearInterval(cuntdown);
-      //   endGame();
+      endGame();
     }
     timeLeft--;
   }, 1000);
 }
 
+/**
+ * This function inicialize the game loop, resetting answer value and prepare a new quiz.
+ */
 function gameLoop() {
   answer.value = "";
   prepareQuiz();
   convertToCode(quiz);
-  console.log(score);
 }
 
 /**
@@ -208,30 +412,34 @@ function convertToCode(quiz) {
  * This function check if answer has value, then decides if answer is correct.
  */
 function checkAnswer(e) {
-    if(answer.value){
-        isCorrectAnswer = quiz === answer.value;
-        calculateScore();
-        gameLoop();
-    }
+  if (answer.value) {
+    isCorrectAnswer = quiz === answer.value;
+    calculateScore();
+    gameLoop();
+  }
 }
 
 /**
  * This function calculates scores, correct answer +2p, incorrect -1p.
  */
-const calculateScore = () => { score = isCorrectAnswer ? score + 2 : score -1;}
+const calculateScore = () => {
+  score = isCorrectAnswer ? score + 2 : score - 1;
+};
 
-
-function displayMessage (){
-    const message = document.getElementById("message");
-    const username = document.getElementById("user-name").value
-    message.textContent = `Dear ${username}!
+/**
+ * This function prints the end game message to the user.
+ */
+function displayMessage() {
+  const message = document.getElementById("message");
+  const username = document.getElementById("user-name").value;
+  message.textContent = `Dear ${username}!
     Thank you for playing the game.
     Your score is: ${score}`;
 }
 
 // Testing:
 
-// convertToCode function testing:
+// convertToCode function test:
 
 const testing = false;
 
