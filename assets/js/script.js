@@ -447,7 +447,7 @@ function displayMessage() {
 
 // convertToCode function test:
 
-const testing = false;
+let testing = false;
 
 const assert = (quiz, expected) => {
   const result = convertToCode(quiz);
