@@ -66,6 +66,7 @@ function startGame(e) {
  * This function ends the game and changes screen to endGameScreen.
  */
 function endGame(e) {
+    displayMessage();
   toggleScreen(1, 2);
 }
 
@@ -93,6 +94,7 @@ let code = "";
 const question = document.getElementById("question");
 const answer = document.getElementById("answer");
 let isCorrectAnswer;
+let score = 0;
 let wordCollection = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", 
     "kiwi", "lemon", "mango", "nectarine", "orange", "papaya", "quince", "raspberry", 
     "strawberry", "tangerine", "ugli", "vanilla", "watermelon", "xigua", "yam", "zucchini",
@@ -128,6 +130,7 @@ function gameLoop() {
   answer.value = "";
   prepareQuiz();
   convertToCode(quiz);
+  console.log(score);
 }
 
 /**
@@ -212,9 +215,18 @@ function checkAnswer(e) {
     }
 }
 
-function calculateScore() {
-    console.log(` ${quiz} ${answer.value} same: ${isCorrectAnswer}`);
+/**
+ * This function calculates scores, correct answer +2p, incorrect -1p.
+ */
+const calculateScore = () => { score = isCorrectAnswer ? score + 2 : score -1;}
 
+
+function displayMessage (){
+    const message = document.getElementById("message");
+    const username = document.getElementById("user-name").value
+    message.textContent = `Dear ${username}!
+    Thank you for playing the game.
+    Your score is: ${score}`;
 }
 
 // Testing:
