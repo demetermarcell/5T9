@@ -139,16 +139,16 @@ input:focus {
 
 /* End Game Message */
 #message h2 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 #message p {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 #message span {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 /* Game Control buttons section */
@@ -203,28 +203,28 @@ input:focus {
 
 /* Footer */
 footer {
-    color: var(--brand-lgrey);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    /* font-weight: bold; */
+  color: var(--brand-lgrey);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  /* font-weight: bold; */
 }
 footer div {
-    padding: 0.2rem;
-    display: flex;
-    flex-direction: row;
+  padding: 0.2rem;
+  display: flex;
+  flex-direction: row;
 }
 footer h3 {
-    color: var(--brand-neon);
-    margin: 0.5rem;
+  color: var(--brand-neon);
+  margin: 0.5rem;
 }
 footer p {
-    padding: 0 0.6rem;
-    text-align: center;
-    margin: 0.3rem;
+  padding: 0 0.6rem;
+  text-align: center;
+  margin: 0.3rem;
 }
 
 /* Media queries */
@@ -256,18 +256,18 @@ footer p {
   }
 
   /* End Game Message */
-#message h2 {
+  #message h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-}
+  }
 
-#message p {
+  #message p {
     font-size: 1rem;
-}
+  }
 
-#message span {
+  #message span {
     font-weight: bold;
-}
+  }
 
   /* Button styles: */
   .btn {
@@ -280,5 +280,5 @@ footer p {
   /* Footer */
   footer div {
     flex-direction: column;
-}
+  }
 }
