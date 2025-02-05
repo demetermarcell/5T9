@@ -19,7 +19,7 @@
   --brand-lgrey: #e6e7e2;
   --brand-dgrey: #7f8083;
   --brand-black: #212727;
-  --brand-lblue: #15BBC7;
+  --brand-lblue: #15bbc7;
 }
 
 /* Global Styles */
@@ -70,7 +70,7 @@ body {
 }
 
 .game-screen p {
-    padding: 0 3rem;
+  padding: 0 3rem;
 }
 
 .game-screen span {
@@ -79,54 +79,54 @@ body {
 
 /* Input styling */
 #user-form label {
-    font-size: 150%;
+  font-size: 150%;
 }
 
 input {
-    background-color: var(--brand-neon);
-    border: 4px solid var(--brand-dgreen);
-    color: var(--brand-dgreen);
-    font-family: var(--brand-primary-font);
-    font-size: 200%;
+  background-color: var(--brand-neon);
+  border: 4px solid var(--brand-dgreen);
+  color: var(--brand-dgreen);
+  font-family: var(--brand-primary-font);
+  font-size: 200%;
 }
 
 input:focus {
-    outline: none; 
-  }
+  outline: none;
+}
 
 /* Timer */
 .timer-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    width: 100%;
-    padding-top: 0.5rem;
-    padding-right: 1.5rem;    
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 0.5rem;
+  padding-right: 1.5rem;
 }
 #timer-display {
-    font-size: 250%;
+  font-size: 250%;
 }
 
 /* QA container */
 .qa-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-grow: 1;
-    padding-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  padding-bottom: 5rem;
 }
 
 .qa-container p {
-    font-size: 250%;
+  font-size: 250%;
 }
 
 #question {
-    font-size: 350%;
+  font-size: 350%;
 }
 
 #answer {
-    font-size: 400%;
-    text-align: center;
+  font-size: 400%;
+  text-align: center;
 }
 
 /* Game Control buttons section */
@@ -147,35 +147,35 @@ input:focus {
 /* Button styles: */
 
 .btn {
-    background: linear-gradient(var(--brand-lgrey), var(--brand-dgrey));
-    color: var(--brand-black);
-    border: none;
-    height: 3.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1.2rem;
+  background: linear-gradient(var(--brand-lgrey), var(--brand-dgrey));
+  color: var(--brand-black);
+  border: none;
+  height: 3.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.2rem;
 }
 
-.btn:hover{
-    color: var(--brand-lblue)
+.btn:hover {
+  color: var(--brand-lblue);
 }
 
 .btn:active {
-    transform: translateY(1px);
+  transform: translateY(1px);
 }
 
 .btn-main {
-    border-radius: 45%;
-    width: 70%;
-    font-size: 2rem;
+  border-radius: 45%;
+  width: 70%;
+  font-size: 2rem;
 }
 
 .btn-left {
-    border-radius: 45px 200px 45px 200px;
-    width: 15%;
+  border-radius: 45px 200px 45px 200px;
+  width: 15%;
 }
 
 .btn-right {
-    border-radius: 200px 45px 200px 45px;
-    width: 15%;
+  border-radius: 200px 45px 200px 45px;
+  width: 15%;
 }
